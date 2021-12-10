@@ -1,0 +1,153 @@
+<?php
+    session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="style.css?">
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn text-decoration-none" onclick="closeNav()">&times;</a>
+    <div class="nav-item text-center">
+        <img src="images/male.svg">
+        <button class="button text-center">Thay đổi ảnh đại diện</button>
+    </div>
+    <div class="inform">
+        <a>Mã Nhân Viên<br /> <a class="text-decoration-none">51900771</a></a>
+    </div>
+    <div class="inform">
+        <a>Tên Tài Khoản<br /> <a class="text-decoration-none">SangSinh21</a></a>
+    </div>
+    <div class="inform">
+        <a>Họ và Tên<br /> <a class="text-decoration-none">Nguyễn Sang Sinh</a></a>
+    </div>
+    <div class="inform">
+        <a>Phòng ban<br /> <a class="text-decoration-none">Kiểm thử phần mềm</a></a>
+    </div>
+    <div class="inform">
+        <a>Chức vụ<br /> <a class="text-decoration-none">Làm công ăn lương</a></a>
+    </div>
+    <div class="text-center align-items-center" style="padding-top: 10px">
+        <button class="button text-center">Đổi mật khẩu</button>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg border-bottom border-gray">
+    <div class="navbar-child order-0">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <span id="pointer" class="pointer" onclick="openNav()">&#9776;</span>
+            </li>
+            <li class="nav-item">
+                <a>Phòng Ban Kiểm Thử Phần Mềm<br /> <a class="text-decoration-none">Nguyễn Sang Sinh</a></a>
+            </li>
+        </ul>
+    </div>
+    <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html"> Tình trạng công việc </a> </li>
+        <li class="nav-item"><a class="nav-link" href="index-ql.html"> Quản lý công việc </a></li>
+        <li class="nav-item"><a class="nav-link" href="index-ql.html"> Danh sách nghỉ phép </a></li>
+        <li class="nav-item"><a class="nav-link" href="#"> Quản lý nhân viên </a></li>
+    </ul>
+</nav>
+
+<div class="container-fluid align-items-center">
+    <div class="background background-ql col-md-8 col-sm-10"></div>
+</div>
+
+<div style="position: relative;">
+    <div class="container-fluid" style="position: absolute; top: 10px ;display: flex; justify-content: center;">
+        <div class="management col-lg-2 col-md-3 col-sm-4 col-5">
+            <div class="management-item">
+                <button class="button-add text-center">Thêm tác vụ</button>
+                <button class="button-notice text-center">Thêm thông báo</button>
+            </div>
+            <div class="management-item">
+                <a>Tiến độ công việc</a>
+                <div class="task-box">
+                    <span class="dot" style="background-color: var(--task-new)"></span><a class="task text-decoration-none">1 Task New</a><br>
+                </div>
+                <div class="task-box">
+                    <span class="dot" style="background-color: var(--task-progress)"></span><a class="task text-decoration-none">1 Task in Progress</a><br>
+                </div>
+                <div class="task-box">
+                    <span class="dot" style="background-color: var(--task-waiting)"></span><a class="task text-decoration-none">1 Task Waiting</a><br>
+                </div>
+                <div class="task-box">
+                    <span class="dot" style="background-color: var(--task-rejected)"></span><a class="task text-decoration-none">1 Task Rejected</a><br>
+                </div>
+            </div>
+            <div class="management-item">
+                <a>Tổng số tác vụ</a>
+                <div class="task-box">
+                    <span class="dot" style="background-color: var(--task-complete)"></span><a class="task text-decoration-none">1 Task completed</a><br>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span class="dot" style="background-color: var(--task-canceled)"></span><a class="task text-decoration-none">1 Task canceled</a><br>
+                </div>
+            </div>
+
+        </div>
+        <div class="management col-lg-6 col-md-7 col-sm-8 col-7" style="padding-left: 20px">
+            <div class="management-item">
+                <div class="row">
+                    <span class="dot-work" style="background-color: var(--task-complete)"></span>
+                    <div>
+                        <a class="text-600">Thêm giao diện</a>
+                        <div class="task-box">
+                            <a class="task text-decoration-none" style="color: var(--dark-green)">To: Nguyễn Hữu Huy</a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="management-item">
+                <div class="row">
+                    <span class="dot-work" style="background-color:var(--task-waiting)"></span>
+                    <div>
+                        <a class="text-600">Thêm quản lý</a>
+                        <div class="task-box">
+                            <a class="task text-decoration-none" style="color: var(--dark-green)">To: Nguyễn Hữu Huy</a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="management-item">
+                <div class="row">
+                    <span class="dot-work" style="background-color: var(--task-rejected)"></span>
+                    <div>
+                        <a class="text-600">Thêm dữ liệu (2)</a>
+                        <div class="task-box">
+                            <a class="task text-decoration-none" style="color: var(--dark-green)">To: Thạch Thanh Hữu</a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="management-item">
+                <div class="row">
+                    <span class="dot-work" style="background-color: var(--task-complete)"></span>
+                    <div>
+                        <a class="text-600">Chức năng đăng nhập (1)</a>
+                        <div class="task-box">
+                            <a class="task text-decoration-none" style="color: var(--dark-green)">To: Thạch Thanh Hữu</a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
