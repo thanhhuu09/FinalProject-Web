@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (!isset($_SESSION['user'])) {
+        header('Location: login.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -9,86 +13,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="./css/style.css">
-    <script type="text/javascript" src="index.js"></script>
+    <link type="text/css" rel="stylesheet" href="./style.css">
 </head>
 <body>
-<!-- <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn text-decoration-none" onclick="closeNav()">&times;</a>
-    <div class="nav-item text-center">
-        <img src="images/male.svg">
-        <button class="button text-center">Thay đổi ảnh đại diện</button>
-    </div>
-    <div class="inform">
-        <a>Mã Nhân Viên<br /> <a class="text-decoration-none">51900771</a></a>
-    </div>
-    <div class="inform">
-        <a>Tên Tài Khoản<br /> <a class="text-decoration-none">SangSinh21</a></a>
-    </div>
-    <div class="inform">
-        <a>Họ và Tên<br /> <a class="text-decoration-none">Nguyễn Sang Sinh</a></a>
-    </div>
-    <div class="inform">
-        <a>Phòng ban<br /> <a class="text-decoration-none">Kiểm thử phần mềm</a></a>
-    </div>
-    <div class="inform">
-        <a>Chức vụ<br /> <a class="text-decoration-none">Làm công ăn lương</a></a>
-    </div>
-    <div class="text-center align-items-center" style="padding-top: 10px">
-        <button class="button text-center">Đổi mật khẩu</button>
-    </div>
-</div> -->
-
-<nav class="navbar navbar-expand-lg border-bottom border-gray">
-    <div class="navbar-child order-0">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <span id="pointer" class="pointer" onclick="openNav()">&#9776;</span>
-            </li>
-            <li class="nav-item department">
-                <a>Phòng Ban Kiểm Thử Phần Mềm<br /></a>
-            </li>
-        </ul>
-    </div>
-    <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html"> Tình trạng công việc </a> </li>
-        <li class="nav-item"><a class="nav-link" href="index-ql.html"> Quản lý công việc </a></li>
-        <li class="nav-item"><a class="nav-link" href="index-ql.html"> Danh sách nghỉ phép </a></li>
-        <li class="nav-item"><a class="nav-link" href="#"> Quản lý nhân viên </a></li>
-    </ul>
-    
-    <div class="navbar-child mx-auto">
-        <div id ="user-info" >
-            <img class="avatar" src="images/male.svg">
-            <span class = "topbar_name">SangSinh21</span>
-            <div class="navbar-user-list">
-                <a class = "navbar-user-item" href="profile.html">Tài khoản của tôi</a>
-                <a class = "navbar-user-item" href="#">Nhắn tin</a>
-                <a class = "navbar-user-item" href="#">Đăng xuất</a>
-            </div>
-        </div>
-    </div>
-</nav>
-
-<!-- <nav class="navbar navbar-expand-lg border-bottom border-gray">
-    <div class="navbar-child order-0">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <span id="pointer" class="pointer" onclick="openNav()">&#9776;</span>
-            </li>
-            <li class="nav-item">
-                <a>Phòng Ban Kiểm Thử Phần Mềm<br /> <a class="text-decoration-none">Nguyễn Sang Sinh</a></a>
-            </li>
-        </ul>
-    </div>
-    <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html"> Tình trạng công việc </a> </li>
-        <li class="nav-item"><a class="nav-link" href="index-ql.html"> Quản lý công việc </a></li>
-        <li class="nav-item"><a class="nav-link" href="index-ql.html"> Danh sách nghỉ phép </a></li>
-        <li class="nav-item"><a class="nav-link" href="#"> Quản lý nhân viên </a></li>
-    </ul>
-</nav> -->
-
+<?php
+    require_once ('./Include/NavbarQL.php');
+?>
 <div class="container-fluid align-items-center">
     <div class="background background-ql col-md-8 col-sm-10"></div>
 </div>
@@ -177,6 +107,7 @@
 
 </div>
 
+<script type="text/javascript" src="./main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
