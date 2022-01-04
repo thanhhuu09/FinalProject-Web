@@ -1,6 +1,10 @@
 <?php
     session_start();
-    
+
+    if (!isset($_SESSION['user']) || $_SESSION['activated'] == 0) {
+        header('Location: login.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +20,7 @@
 <body>
 
 <?php
-require_once ('./Include/Navbar.php')
+    require_once ('./Include/Navbar.php')
 ?>
 
 <div class="container-fluid align-items-center">
@@ -107,7 +111,7 @@ require_once ('./Include/Navbar.php')
 
 </div>
 
-<div class="modal fade" id="re-password">
+<!-- <div class="modal fade" id="re-password">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -133,9 +137,9 @@ require_once ('./Include/Navbar.php')
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="modal fade" id="re-avatar">
+<!-- <div class="modal fade" id="re-avatar">
     <div class="modal-dialog">
         <div class="modal-content align-items-center">
             <h1 class="mt-4 mb-2">Đổi ảnh đại diện</h1>
@@ -153,7 +157,7 @@ require_once ('./Include/Navbar.php')
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="modal fade" id="new-task">
     <div class="modal-dialog">

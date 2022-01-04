@@ -18,11 +18,11 @@
     <div class="navbar-child mx-auto">
         <div id ="user-info" >
             <img class="avatar" src="images/male.svg">
-            <span class = "topbar_name">SangSinh21</span>
+            <span class = "topbar_name"><?= $_SESSION['user'] ?></span>
             <div class="navbar-user-list">
-                <a class = "navbar-user-item" href="profile.html">Tài khoản của tôi</a>
+                <a class = "navbar-user-item" href="./profile.php">Tài khoản của tôi</a>
                 <a class = "navbar-user-item" href="#">Nhắn tin</a>
-                <a class = "navbar-user-item" href="#">Đăng xuất</a>
+                <a class = "navbar-user-item" href="./logout.php">Đăng xuất</a>
             </div>
         </div>
     </div>

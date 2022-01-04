@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['user']) || $_SESSION['activated'] == 0) {
+        header('Location: login.php');
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +23,7 @@
     require_once ('./Include/NavbarQL.php');
 ?>
 
-<!-- <div class="container-fluid align-items-center">
-    <div class="background col-lg-8 col-md-10 col-sm-12"></div>
-</div> -->
-
 <div class="body-profile">
-
     <div class="container-fluid title col-lg-8 col-md-10 col-sm-12">
         <div class="header">
             <h3>Hồ Sơ Của Tôi</h3>
@@ -68,7 +71,7 @@
                     </div>
     
                     <div class="save-btn">
-                        <button type="button" class="btn" aria-disabled="false">Lưu</button>
+                        <button type="button" class="btn btn-profile" aria-disabled="false">Lưu</button>
                     </div>
     
                 </div>

@@ -1,8 +1,43 @@
 <?php
     session_start();
+    $error = '';
+    $pass = '';
+    $pass_confirm = '';
     if (!isset($_SESSION['user'])) {
         header('Location: login.php');
         exit();
+    }
+    if (isset($_POST['logout'])) {
+        session_destroy();
+        header("Location: login.php");
+        exit();
+    }
+    if (isset($_POST['pass']) && isset($_POST['pass-confirm']) && isset($_POST['login'])) {
+        $pass = $_POST['pass'];
+        $pass_confirm = $_POST['pass-confirm'];
+        if (empty($pass)) {
+            $error = 'Please enter your password';
+        }
+        else if (strlen($pass) < 6) {
+            $error = 'Password must have at least 6 characters';
+        }
+        else if ($pass != $pass_confirm) {
+            $error = 'Password does not match';
+        }
+        else {
+            require_once('connection.php');
+            $sql = 'UPDATE account set password = ?, activated = ? where username = ?';
+            try{
+                $stmt = $dbCon->prepare($sql);
+                $stmt->execute(array(password_hash($pass,PASSWORD_DEFAULT),1,$_SESSION['user']));     
+                $count = $stmt->rowCount();
+                header('Location: index.php');
+                exit();        
+            }
+                catch(PDOException $ex){
+                $error = $ex->getMessage();
+            }
+        }
     }
 ?>
 
@@ -12,7 +47,6 @@
     <title>Change Password</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
 
@@ -27,16 +61,23 @@
             <form method="post" class="px-4 px-sm-4 px-m-5 px-lg-4 pt-3">
                 <div class="renew">
                     <div class="form-group">
-                        <input id="newpassword" name="newpassword" type="password" class="form-input" placeholder="Nhập mật khẩu mới">
+                        <input id="newpassword" name="pass" type="password" class="form-input" placeholder="Nhập mật khẩu mới">
                     </div>
                     <div class="form-group">
-                        <input id="validation" name="validation" type="password" class="form-input" placeholder="Nhập lại mật khẩu mới">
+                        <input id="validation" name="pass-confirm" type="password" class="form-input" placeholder="Nhập lại mật khẩu mới">
                     </div>
                 </div>
                 <div class="input-group custom-control custom-checkbox pt-3">
+                    <?php
+                        if (!empty($error)) {
+                            echo "<div class='alert alert-danger' style='margin: auto'>$error</div>";
+                        }
+                    ?>
                     <div class="custom-button text-right">
-                        <button name="login" class="btn btn-success">Đăng nhập</button>
+                        <button name="login" class="btn btn-success btn-login">Đăng nhập</button>
+                        <button name="logout" class="btn btn-logout">Đăng xuất</button>
                     </div>
+                    
                 </div>
             </form>
         </div>
@@ -47,7 +88,7 @@
     </div>
 </div>
 
-
+<script src="./main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

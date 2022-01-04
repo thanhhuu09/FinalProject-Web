@@ -1,12 +1,17 @@
 <?php 
     session_start();
-    // if (isset($_SESSION['user'])) {
-    //     header('Location: index.php');
-    //     exit();
-    // }
+    if (isset($_SESSION['user']) && isset($_SESSION['activated'])) {
+        if ($_SESSION['activated'] == 0) {
+            header('Location: repassword.php');
+            exit();
+        }
+        else {
+            header('Location: index.php');
+            exit();
+        }
+    }
 
     $error = '';
-
     $user = '';
     $pass = '';
 
@@ -31,8 +36,8 @@
             $stmt->execute(array($user));
             if($stmt->rowCount() > 0) {
                 $row = $stmt->fetch();
-                // if (password_verify($pass,$row['password'])) {
-                if ($pass == '123456') {
+                if (password_verify($pass,$row['password'])) {
+                // if ($pass == '123456') {
                     $_SESSION['user'] = $row['username'];
                     $_SESSION['activated'] = $row['activated'];
                     if ($row['activated'] == 0) {
@@ -42,7 +47,7 @@
                     }
                     else {
                         $_SESSION['role'] = $row['role'];
-                        header('Location: index.php');
+                        header('Location: index-ql.php');
                         exit();
                     }
                 }
@@ -88,8 +93,6 @@
                     <input value="<?= $pass ?>" id="password" name="pass" type="password" class="form-input" placeholder="Mật khẩu">
                 </div>
                 <div class="input-group custom-control custom-checkbox text-left">
-                    <input <?= isset($_POST['remember']) ? 'checked' : '' ?> type="checkbox" class="custom-control-input" id="remember">
-                    <label class="custom-control-label text-secondary" for="remember">Remember login</label>
                     <div class="custom-button text-right">
                         <?php
                             if (!empty($error)) {
