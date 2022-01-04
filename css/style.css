@@ -1,0 +1,445 @@
+@font-face {
+    font-family: "PoppinsVN-400";
+    src: url("fonts/PoppinsVN-400.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "PoppinsVN-600-italic";
+    src: url("fonts/PoppinsVN-600-italic.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "PoppinsVN-600";
+    src: url("fonts/PoppinsVN-600.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "PoppinsVN-500";
+    src: url("fonts/PoppinsVN-500.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "PoppinsVN-700";
+    src: url("fonts/PoppinsVN-700.woff2") format('woff2');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root{
+    --black: #292929;
+    --gray: #AFB7C2;
+    --green: #48BF91;
+    --light-green: #15997A;
+    --dark-green: #00563F;
+    --button-green: #00773e;
+    --white: #FFFFFFFF;
+    --white-light: #F3F3F3;
+    --calm-blue: #A8D8DF;
+
+    --background-color: #00563F;
+    --text-color: #2B2E52;
+    --text-color-2: #415275;
+    --task-new: #F3F3F3;
+    --task-progress: #EBC38B;
+    --task-waiting:  #E6956E;
+    --task-rejected: #BB061C;
+    --task-complete: #00773e;
+    --task-canceled: #434340;
+}
+
+body {
+    font-family:"PoppinsVN-400",sans-serif;
+    font-weight: 400;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.align-items-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    font-family:"PoppinsVN-700",sans-serif;
+    color: var(--black);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 54px;
+    letter-spacing: .01em;
+}
+
+.row .img{
+    width: 100%;
+}
+
+.form-input {
+    width: 90%;
+    height: 50px;
+    padding: 19px 14px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 1px 5% 0 5%;
+}
+
+
+.input-group{
+    width: 90%;
+    margin: 1px 5% 0 5%;
+}
+
+.form-input:hover{
+    border: 1px solid var(--green);
+}
+
+.form-input:focus{
+    border: 2px solid var(--dark-green);
+}
+
+.custom-control-label:hover{
+    color: var(--green);
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: var(--dark-green);
+    box-shadow: none;
+}
+
+.custom-checkbox .custom-control-input:hover ~ .custom-control-label::before {
+    color: var(--dark-green);;
+    border-color: var(--dark-green);
+    box-shadow: none;
+}
+
+.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: none;
+    border-color: var(--dark-green);
+}
+
+.custom-button .btn {
+    background-color: var(--dark-green);
+    text-shadow: none;
+    padding: 3px 12px ;
+}
+
+.custom-button .btn:hover{
+    background-color: var(--light-green);
+}
+
+/*Style for index*/
+/*Style for index*/
+/*Style for index*/
+.navbar .navbar-child .navbar-nav .nav-item{
+    margin-right: 10px;
+}
+
+.navbar .navbar-child .navbar-nav .pointer{
+    font-size:30px;
+    cursor:pointer;
+    border: 1px;
+    border-radius: 50%;
+}
+
+.department {
+    line-height: 45px;
+}
+
+/* .navbar .navbar-child .navbar-nav .pointer:hover{
+    color: var(--dark-green);
+} */
+
+/* The sidenav */
+/* .sidenav {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: 1;
+    background: var(--white);
+    padding-top: 10px;
+    transition:width .7s;
+    -webkit-transition:width .7s;
+    -moz-transition: width .7s;
+    border-radius: 5px;
+    border-right: 1px solid var(--gray);
+    box-shadow: 10px 3px 10px -10px var(--gray);
+    overflow: auto;
+    display:block;
+} */
+
+/* The sidenav-item */
+
+/* .sidenav .closebtn {
+    color: var(--gray);
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 26px;
+}
+
+.sidenav .closebtn:hover {
+    color: var(--dark-green);
+}
+
+.sidenav img{
+    margin: 10% 10% 5% 10%;
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+    border-right: 1px solid var(--gray);
+    box-shadow: 15px 3px 10px -10px var(--gray);
+}
+
+.sidenav .nav-item{
+    border-bottom: 1px solid var(--gray);
+    box-shadow: 1px 1px 10px -5px var(--gray);
+    margin-bottom: 15px;
+}
+
+.sidenav .button{
+    background-color: var(--white);
+    padding: 2px 8px;
+    border-radius: 16px;
+    border: 1px solid var(--gray);
+    margin-bottom: 12px;
+    white-space:nowrap;
+}
+
+.sidenav .button:hover{
+    color: var(--dark-green);
+    border-color: var(--dark-green);
+    box-shadow: 1px 1px 10px -5px var(--dark-green);
+}
+
+.sidenav a{
+    padding: 0 15px 0 0;
+    font-size: 110%;
+    color: var(--dark-green);
+    transition: 0.3s;
+    display: block;
+    white-space:nowrap;
+}
+
+.sidenav .inform{
+    border-radius: 0 16px 16px 0;
+    margin: 0 0 5% 0;
+    padding-left: 10%;
+}
+
+.sidenav .inform:hover{
+    background-color: var(--white-light);
+}
+
+.sidenav .inform:hover > .text-decoration-none{
+    color: var(--green);
+} */
+
+/* NAV BAR */
+
+.navbar {
+    background-color: var(--background-color);
+    color: var(--white);
+}
+
+#user-info {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#user-info:hover span{
+    color: rgba(255, 255, 255, 0.9);;
+}
+
+.avatar {
+    height: 32px;
+    width: 32px;
+    object-fit: cover;
+}
+
+.topbar_name {
+    color: var(--white);
+}
+
+.navbar-user-list {
+    left: 6px;
+    display: none;
+    position: absolute;
+    width: 160px;
+    top: 145%;
+    z-index: 2;
+    box-shadow: 0 1px 12px rgb(0 0 0 / 30%);
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFFFF;
+}
+
+.navbar-user-item {
+    padding: 5px 0 5px 10px;
+    display: block;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.navbar-user-item:hover {
+    background-color: rgb(173, 171, 173);
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.navbar .nav-item .nav-link{
+    font-family: PoppinsVN-500, sans-serif;
+    color: var(--white);
+    border-bottom: 2px;
+}
+
+.navbar .nav-item .nav-link:hover{
+    color: var(--white);
+    border-bottom: solid var(--white);
+    box-shadow: 1px 10px 10px -10px var(--white);
+}
+
+.navbar .text-decoration-none{
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: var(--white);
+    color: var(--dark-green);
+}
+
+.navbar .text-decoration-none:hover{
+    color: var(--light-green);
+}
+
+.background{
+    height: 35vh;
+    border-radius: 8px;
+    background-color: var(--background-color);
+    margin-top: 16px;
+    background-image: url('images/undraw_code_thinking_re_gka2.svg');
+    background-position:  right; background-size: 70% 90%;
+    background-repeat: no-repeat;
+}
+
+.background-ql{
+    background-image: url('images/undraw_dashboard_re_3b76.svg');
+}
+
+
+/*Management Layout*/
+.container-fluid .management{
+    padding: 0 0;
+}
+
+.container-fluid .management .management-item{
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 16px 16px;
+    text-align: left;
+}
+
+.container-fluid .management .right .management-item:hover{
+    background-color: var(--white-light);
+}
+
+
+.container-fluid .management-item .task{
+    color: #363636;
+    text-decoration: none;
+}
+.container-fluid .management-item .task-box{
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+
+.container-fluid .management .management-item .button-add{
+    border: none;
+    color: var(--white);
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 8px 0px;
+    width: 100%;
+
+}
+
+.container-fluid .management .management-item .button-notice{
+    border: 1px solid var(--gray);
+    color: var(--dark-green);
+    background-color: var(--white-light);
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 8px 0px;
+    width: 100%;
+
+}
+
+.container-fluid .management .management-item .button-add:hover{
+    color: var(--white);
+    background-color: var(--light-green);
+}
+
+.container-fluid .management .management-item .button-notice:hover{
+    border: 1px solid var(--dark-green);
+    color: var(--dark-green);
+    background-color: var(--white-light);
+}
+
+.container-fluid .management .management-item a{
+    font-family: PoppinsVN-500, sans-serif;
+    color: var(--black);
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.task-new{
+    background-color: var(--task-new);
+}
+
+.task-progress{
+    background-color: var(--task-progress);
+}
+
+.task-waiting{
+    background-color: var(--task-waiting);
+}
+
+.task-rejected{
+    background-color: var(--task-rejected);
+}
+
+.task-complete{
+    background-color: var(--task-complete);
+}
+
+.task-canceled{
+    background-color: var(--task-canceled);
+}
+
+.dot-work {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.form-group .task-label{
+    margin: 1px 5% 5px 5%;
+    color: var(--black) ;
+    font-family: 'PoppinsVN-500', sans-serif;
+}
