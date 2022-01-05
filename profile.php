@@ -4,6 +4,29 @@
         header('Location: login.php');
         exit();
     }
+    $error = '';
+    $username = '';
+    $name = '';
+    $position = '';
+    $department = '';
+    $avatar = '';
+    require_once ('./connection.php');
+    $sql = 'SELECT username,name,position,department,avatar FROM account where username = ?';
+
+    try{
+        $stmt = $dbCon->prepare($sql);
+        $stmt->execute(array($_SESSION['user']));
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $username = $data['username'];
+        $name = $data['name'];
+        $position = $data['position'];
+        $department = $data['department'];
+        $avatar = $data['avatar'];
+    }
+    catch(PDOException $ex){
+        $error = $ex->getMessage();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +40,13 @@
     <link rel="stylesheet" href="./style.css">
     <title>Hồ sơ của tôi</title>
 </head>
-<body>
+<body class="body-profile">
 
 <?php
     require_once('./include/NavbarQL.php');
 ?>
 
-<div class="body-profile">
+<div style="padding-top: 1.25rem;">
     <div class="container-fluid title col-lg-8 col-md-10 col-sm-12">
         <div class="header">
             <h3>Hồ Sơ Của Tôi</h3>
@@ -35,14 +58,8 @@
                 <div class="info-list">
                     <div class="info-item-wrap">
                         <div class="info-item">
-                            <label>Mã nhân viên</label>
-                            <p class="context">jfapjsfjHfai</p>
-                        </div>
-                    </div>
-                    <div class="info-item-wrap">
-                        <div class="info-item">
                             <label>Tên tài khoản</label>
-                            <p class="context">Tonyteo</p>
+                            <p class="context"><?= $username ?></p>
                         </div>
                     </div>
                     <div class="info-item-wrap">
@@ -54,19 +71,19 @@
                     <div class="info-item-wrap">
                         <div class="info-item">
                             <label>Tên</label>
-                            <p class="context">My Den</p>
+                            <p class="context"><?= $name ?></p>
                         </div>
                     </div>
                     <div class="info-item-wrap">
                         <div class="info-item">
                             <label>Chức vụ</label>
-                            <p class="context">Làm lính</p>
+                            <p class="context"><?= $position ?></p>
                         </div>
                     </div>
                     <div class="info-item-wrap">
                         <div class="info-item">
                             <label>Phòng ban</label>
-                            <p class="context">Ăn chơi</p>
+                            <p class="context"><?= $department ?></p>
                         </div>
                     </div>
     
@@ -80,7 +97,7 @@
                 <div class="info-image">
                     <div class="info-img">
                         <div class="img-wrap">
-                            <img src=".\images\photo-1453728013993-6d66e9c9123a.jpg" alt="">
+                            <img src="./avatar/<?= $avatar ?>" alt="">
                         </div>
                         <input id="file-upload" type="file" accept="image/jpeg, image/png" value="Chọn Ảnh">
                         <label for="file-upload" class="custom-file-upload">Chọn Ảnh</label>

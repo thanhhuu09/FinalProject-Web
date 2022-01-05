@@ -25,8 +25,8 @@
         else if (empty($pass)) {
             $error = 'Please enter your password';
         }
-        else if (strlen($pass) < 6) {
-            $error = 'Password must have at least 6 characters';
+        else if (strlen($pass) < 3) {
+            $error = 'Password must have at least 3 characters';
         }
         else {
             // success
@@ -40,6 +40,7 @@
                 // if ($pass == '123456') {
                     $_SESSION['user'] = $row['username'];
                     $_SESSION['activated'] = $row['activated'];
+                    $_SESSION['avatar'] = $row['avatar'];
                     if ($row['activated'] == 0) {
                         $_SESSION['role'] = $row['role'];
                         header('Location: repassword.php');

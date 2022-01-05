@@ -17,7 +17,7 @@
 
     <div class="navbar-child mx-auto">
         <div id ="user-info" >
-            <img class="avatar" src="images/male.svg">
+            <img class="avatar" src="avatar/<?= isset($_SESSION['avatar']) ? $_SESSION['avatar'] : '' ?>">
             <span class = "topbar_name"><?= isset($_SESSION['user']) ? $_SESSION['user'] : 'Undefine' ?></span>
             <div class="navbar-user-list">
                 <a class = "navbar-user-item" href="./profile.php">Tài khoản của tôi</a>
