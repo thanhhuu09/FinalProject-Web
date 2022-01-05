@@ -275,6 +275,8 @@ h1 {
     color: #363636;
     text-decoration: none;
 }
+
+
 .container-fluid .management-item .task-box{
     display: flex;
     align-items: center;
@@ -360,6 +362,12 @@ h1 {
 }
 
 .form-group .task-label{
+    margin: 1px 5% 5px 5%;
+    color: var(--black) ;
+    font-family: 'PoppinsVN-500', sans-serif;
+}
+
+.form-group .custom-file-label{
     margin: 1px 5% 5px 5%;
     color: var(--black) ;
     font-family: 'PoppinsVN-500', sans-serif;
@@ -470,7 +478,7 @@ h1 {
     width: 17.5rem;
     overflow: hidden;
     border-left: 0.0625rem solid #efefef;
-    
+
 }
 
 .info-image {

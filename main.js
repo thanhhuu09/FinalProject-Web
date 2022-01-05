@@ -35,3 +35,11 @@ document.addEventListener("click", (evt) => {
     check = false;
     document.getElementsByClassName("navbar-user-list")[0].style.display = 'none';
 });
+
+
+//Task event
+function create_task(){
+    let data = new FormData();
+    data.append("name", $("name-task").val());
+    alert(data);
+}

@@ -20,7 +20,7 @@
 <body>
 
 <?php
-    require_once ('./Include/NavbarQL.php');
+    require_once('./include/NavbarQL.php');
 ?>
 
 <div class="body-profile">

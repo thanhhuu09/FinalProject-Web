@@ -1,10 +1,10 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['user']) || $_SESSION['activated'] == 0) {
-        header('Location: login.php');
-        exit();
-    }
+//    if (!isset($_SESSION['user']) || $_SESSION['activated'] == 0) {
+//        header('Location: login.php');
+//        exit();
+//    }
 ?>
 
 <!DOCTYPE html>
@@ -14,13 +14,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="./style.css">
+    <link type="text/css" rel="stylesheet" href="./style.css?<?php echo time(); ?>">
 </head>
 
 <body>
 
 <?php
-    require_once ('./Include/Navbar.php')
+//require_once('include/Navbar.php')
 ?>
 
 <div class="container-fluid align-items-center">
@@ -64,7 +64,7 @@
                 <div class="management-item">
                     <div class="row">
                         <span class="dot-work task-complete"></span>
-                        <div>
+                        <div >
                             <a class="task">Thêm giao diện</a>
                             <div class="task-box">
                                 <a class="task text-decoration-none" style="color: var(--dark-green)">To: Nguyễn Hữu Huy</a><br>
@@ -111,61 +111,14 @@
 
 </div>
 
-<!-- <div class="modal fade" id="re-password">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <h1 class="text-center mt-5 mb-2">Đổi mật khẩu</h1>
-            <p class="text-center text-secondary px-sm-2">Thay đổi mật khẩu mới cho tài khoản.</p>
-            <form method="post" class="px-4 px-sm-4 px-m-5 px-lg-4 pt-3">
-                <div class="renew">
-                    <div class="form-group">
-                        <input id="password" name="password" type="password" class="form-input" placeholder="Nhập mật khẩu">
-                    </div>
-                    <div class="form-group">
-                        <input id="newpassword" name="newpassword" type="password" class="form-input" placeholder="Nhập mật khẩu mới">
-                    </div>
-                    <div class="form-group">
-                        <input id="validation" name="validation" type="password" class="form-input" placeholder="Nhập lại mật khẩu mới">
-                    </div>
-                </div>
-                <div class="input-group custom-control custom-checkbox pt-3 mb-3">
-                    <div class="custom-button text-right">
-                        <button name="change-password" class="btn btn-success">Đồng ý</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div> -->
-
-<!-- <div class="modal fade" id="re-avatar">
-    <div class="modal-dialog">
-        <div class="modal-content align-items-center">
-            <h1 class="mt-4 mb-2">Đổi ảnh đại diện</h1>
-            <img src="images/male.svg" style="width: 60%; height: auto;">
-            <form method="post" >
-                <div class="renew ">
-                    <p style="margin: 10px 0 10px 0">Vui lòng chỉ chọn file hình ảnh </p>
-                    <input type="file" name="avatar" id="upload-photo" class="inform"  style="width: 70%; height: auto;" />
-                </div>
-                <div class="input-group custom-control custom-checkbox pt-2 mb-2 text-right">
-                    <div class="custom-button">
-                        <button name="change-password" class="btn btn-success">Đồng ý</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div> -->
-
 <div class="modal fade" id="new-task">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header align-items-center">
                 <h1 class="mt-4 mb-2">Tạo tác vụ mới</h1>
             </div>
-            <form method="post" class="px-4 px-sm-4 px-m-5 px-lg-4 pt-3">
+
+            <form method="post" class="px-4 px-sm-4 px-m-5 px-lg-4 pt-3" enctype="multipart/form-data" action="api/add_task.php">
                 <div class="renew">
                     <div class="form-group">
                         <label class="task-label" for="name-task">Tên tác vụ</label>
@@ -183,14 +136,19 @@
                     </div>
                     <div class="form-group">
                         <label class="task-label" for="deadline-task">Hạn nộp</label>
-                        <input id="deadline-task" name="deadline-task" type="date" class="form-input" value="2021-12-23">
+                        <input id="deadline-task" name="deadline-task" type="date" class="form-input" value="<?php echo date('Y-m-d'); ?>">
+                    </div>
+                    <div class="form-group">
+                        <label class="task-label" for="deadline-time-task">Thời gian</label>
+                        <input id="deadline-time-task" name="deadline-time-task" type="time" class="form-input" value="11:59">
                     </div>
                     <div class="form-group">
                         <label class="task-label" for="describe-task">Nội dung</label>
                         <textarea id="describe-task" name="describe-task" rows="2" class="form-input" placeholder="Miêu tả chi tiết" style="height: auto;"></textarea>
                     </div>
                     <div class="form-group">
-                        <input id="file-task" name="file-task" type="file" style="margin-left: 5%"/>
+                        <label class="task-label" for="file-task">Đính kèm tập tin</label>
+                        <input id="file-task" class="form-input" name="file-task" type="file" style="display: inline-flex;text-indent: -130px; padding: 10px 14px;" multiple>
                     </div>
                 </div>
                 <div class="input-group custom-control custom-checkbox">

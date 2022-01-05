@@ -17,7 +17,7 @@
 </head>
 <body>
 <?php
-    require_once ('./Include/NavbarQL.php');
+    require_once('./include/NavbarQL.php');
 ?>
 <!-- <div class="container-fluid align-items-center">
     <div class="col-md-8 col-sm-10 title my-4">
