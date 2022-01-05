@@ -31,10 +31,15 @@
                 $stmt = $dbCon->prepare($sql);
                 $stmt->execute(array(password_hash($pass,PASSWORD_DEFAULT),1,$_SESSION['user']));     
                 $count = $stmt->rowCount();
-                header('Location: index.php');
-                exit();        
+                if ($count == 1) {
+                    header('Location: index-ql.php');
+                    exit();    
+                }
+                else {
+                    $error = 'Repassword failed';
+                }  
             }
-                catch(PDOException $ex){
+            catch(PDOException $ex){
                 $error = $ex->getMessage();
             }
         }

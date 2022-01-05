@@ -19,50 +19,6 @@
 <?php
     require_once ('./Include/NavbarQL.php');
 ?>
-<!-- <div class="container-fluid align-items-center">
-    <div class="col-md-8 col-sm-10 title my-4">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="table-body">
-                <tr>
-                    <td>1</td>
-                    <td>Lam Truong</td>
-                    <td>john@example.com</td>
-                    <td>01234567789</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="#">Edit</a>  <a class="btn btn-sm btn-danger" href="#" onclick="confirmRemoval()">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Cam Ly</td>
-                    <td>john@example.com</td>
-                    <td>01234567789</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="#">Edit</a>  <a class="btn btn-sm btn-danger" href="#" onclick="confirmRemoval()">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>My Tam</td>
-                    <td>john@example.com</td>
-                    <td>01234567789</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="#" onclick="showFailedDialog()">Edit</a>  <a class="btn btn-sm btn-danger" href="#" onclick="confirmRemoval()">Delete</a>
-                    </td>
-                </tr>
-        </tbody>
-    </table>
-    </div>
-</div> -->
 
 <div class="container-fluid align-items-center">
     <div class="background col-lg-8 col-md-10 col-sm-12"></div>
@@ -72,7 +28,7 @@
     <div class="container-fluid" style="position: absolute; top: 10px ;display: flex; justify-content: center;">
         <div class="management col-lg-2 col-md-3 col-sm-4 col-5">
             <div class="management-item">
-                <button class="button-add text-center" data-toggle="modal" data-target="#new-task">Thêm nhân viên</button>
+                <button id="add-employee-btn" class="button-add text-center" data-toggle="modal">Thêm nhân viên</button>
                 <select class="form-select button-notice text-center">
                     <option>Toàn bộ nhân viên</option>
                     <option>Theo phòng ban</option>
@@ -80,83 +36,153 @@
             </div>
         </div>
         <div class="management col-lg-6 col-md-7 col-sm-8 col-7" style="padding-left: 20px">
-            <div class="right">
-                <div class="management-item">
+            <div id ="list-employee" class="right">
+
+                <!-- <div class="management-item">
                     <div class="row">
                         <img class="avatar dot-work" src="images/male.svg">
-                        <div>
+                        <div style="flex: 1;">
                             <a class="task">Nguyễn Hữu Huy</a>
                             <div class="task-box">
                                 <a class="task text-decoration-none" style="color: var(--dark-green)">Phòng ban: Quản trị kinh doanh</a><br>
                             </div>
                         </div>
+                        <div class="resetpass" href="#" onclick="confirmRemoval()">ResetPassword</div>
                     </div>
-                </div>
-
-                <div class="management-item">
-                    <div class="row">
-                        <img class="avatar dot-work" src="images/avatar2.jpg">
-                        <div>
-                            <a class="task">Nguyễn Hữu Huy</a>
-                            <div class="task-box">
-                                <a class="task text-decoration-none" style="color: var(--dark-green)">Phòng ban: Quản trị kinh doanh</a><br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            </div>
-    </div>
-</div>
-
-
-<div class="modal fade" id="new-task">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header align-items-center">
-                <h1 class="mt-4 mb-2">Tạo tác vụ mới</h1>
-            </div>
-            <form method="post" class="px-4 px-sm-4 px-m-5 px-lg-4 pt-3">
-                <div class="renew">
-                    <div class="form-group">
-                        <label class="task-label" for="name-task">Tên tác vụ</label>
-                        <input id="name-task" name="name-task" type="text" class="form-input" placeholder="Nhập tên tác vụ">
-                    </div>
-                    <div class="form-group">
-                        <label class="task-label" for="employee-task">Người thực hiện</label>
-                        <select id="employee-task" name="employee-task" class="form-input" style="padding: 2px 14px">
-                            <optgroup label="Phòng ban Kiểm thử">
-                                <option value="1">Nguyễn Sang Sinh</option>
-                                <option value="2">Nguyễn Hữu Huy</option>
-                                <option value="3">Thạch Thanh Hữu</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="task-label" for="deadline-task">Hạn nộp</label>
-                        <input id="deadline-task" name="deadline-task" type="date" class="form-input" value="2021-12-23">
-                    </div>
-                    <div class="form-group">
-                        <label class="task-label" for="describe-task">Nội dung</label>
-                        <textarea id="describe-task" name="describe-task" rows="2" class="form-input" placeholder="Miêu tả chi tiết" style="height: auto;"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input id="file-task" name="file-task" type="file" style="margin-left: 5%"/>
-                    </div>
-                </div>
-                <div class="input-group custom-control custom-checkbox">
-                    <div class="custom-button text-right">
-                        <button name="change-password" class="btn btn-success">Tạo tác vụ</button>
-                    </div>
-                </div>
-            </form>
-            <div class="modal-body">
+                </div> -->
 
             </div>
         </div>
     </div>
 </div>
+
+<!-- Get Employee dialog -->
+<div id="info-employee-dialog" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="header" style="margin: 30px 60px 10px 60px;">
+            <h3 style="font-size: 33px;margin-bottom: 20px;">Hồ Sơ Của <strong class="employee-info" style="color: red;">huuhuy</strong></h3>
+            <p style="font-size: 20px;">Quản lý thông tin hồ sơ của nhân viên</p>
+        </div>
+    
+        <div class="profile-content" style="margin: 0 60px;">
+            <div class="profile-info">
+                <div class="info-list">
+                    <div class="info-item-wrap">
+                        <div class="info-item">
+                            <label>Tài khoản</label>
+                            <p class="context employee-info-username" style="font-size: 22px;">Tonyteo</p>
+                        </div>
+                    </div>
+                    <div class="info-item-wrap">
+                        <div class="info-item">
+                            <label>Mật khẩu</label>
+                            <p class="context" style="font-size: 22px;">*********</p>
+                        </div>
+                    </div>
+                    <div class="info-item-wrap">
+                        <div class="info-item">
+                            <label>Họ và tên</label>
+                            <p class="context employee-info-name" style="font-size: 22px;">My Den</p>
+                        </div>
+                    </div>
+                    <div class="info-item-wrap">
+                        <div class="info-item">
+                            <label>Chức vụ</label>
+                            <p class="context employee-info-position" style="font-size: 22px;">Làm lính</p>
+                        </div>
+                    </div>
+                    <div class="info-item-wrap">
+                        <div class="info-item">
+                            <label>Phòng</label>
+                            <p class="context employee-info-department" style="font-size: 22px;">Ăn chơi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-img">
+                <div class="info-image">
+                    <div class="info-img">
+                        <div class="img-wrap">
+                            <img id="employee-avatar" src=".\avatar\avatar.jpg" alt="avatar"> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add new dialog -->
+<div class="modal fade" id="new-employee-dialog">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        
+            <div class="modal-header">
+            <h1 class="mt-4 mb-2" style="color: var(--dark-green)">Thêm nhân viên mới</h1>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="task-label" for="name-task">Tên đăng nhập</label>
+                    <input id="username" type="text" class="form-input" placeholder="Nhập tên tài khoản">
+                </div>
+                <div class="form-group">
+                    <label class="task-label" for="name">Họ và tên</label>
+                    <input id="name" name="name" type="text" class="form-input" placeholder="Nhập họ và tên">
+                </div>
+                <div class="form-group">
+                    <label class="task-label" for="position">Chức vụ</label>
+                    <select id="position" name="position" class="form-input" style="padding: 2px 14px">
+                        <option value="1">Nhân viên</option>
+                        <option value="2">Trưởng phòng</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="task-label" for="department">Phòng/Ban</label>
+                    <select id="department" name="department" class="form-input" style="padding: 2px 14px">
+                        <option value="1">Công nghệ thông tin</option>
+                        <option value="2">Kế toán</option>
+                        <option value="3">Nhân sự</option>
+                    </select>
+                </div>
+                <div id="add-employee-error" class='alert alert-danger' style='text-align: center;margin: 0 23px;display:none'></div>
+            </div>
+        
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id ="confirm-add" class="btn btn-success">Save</button>
+            </div>            
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Dialog -->
+    <div id="resetPass" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <hp class="modal-title">Reset Password</hp>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc muốn reset <strong class="reset-user"></strong> ?</p>
+                </div>
+                <div id="reset-password-error" class='alert alert-danger' style='text-align: center;margin: 10px 50px;display: none;'></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger resetpass-btn">Reset</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
 
 <script type="text/javascript" src="./main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
