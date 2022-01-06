@@ -1,5 +1,19 @@
 <?php
-    require_once('../task.php');
+    header('Content-Type: application/json');
+    require_once ('../connection.php');
+
+    function add_task($name, $employee, $deadline, $deadtime, $describ, $file, $process){
+        $sql = 'INSERT INTO `task`(`name`, `employee`, `deadline`, `deadtime`, `describ`, `file`, `process`) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $stm = $dbCon->prepare($sql);
+        $stm->bind_param('ssssssi', $name, $employee, $deadline, $deadtime, $describ, $file, $process);
+
+        $stm->execute();
+        if ($stm->affected_rows == 1){
+            return $stm->insert_id;
+        }
+        return -1;
+    }
+
     function error_response($code, $message){
         $res = array();
         $res['code'] = $code;
@@ -7,7 +21,7 @@
 
         die(json_encode($res));
     }
-    header('Content-Type: application/json');
+
     if( empty($_POST['name-task']) || empty($_POST['employee-task']) || empty($_POST['deadline-task'])
     || empty($_POST['deadline-time-task'])){
         error_response(1, 'Du lieu khong hop le');
@@ -43,6 +57,6 @@
         }
     $id = add_task($name, $employee, $deadline, $deadtime, $describ, $file, $process);
     if ($id==0){
-        error_response(3, 'Them that bai');
+        error_response(4, 'Them that bai');
     }
 ?>

@@ -3,10 +3,10 @@
     $error = '';
     $pass = '';
     $pass_confirm = '';
-    if (!isset($_SESSION['user'])) {
-        header('Location: login.php');
-        exit();
-    }
+//    if (!isset($_SESSION['user'])) {
+//        header('Location: login.php');
+//        exit();
+//    }
     if (isset($_POST['logout'])) {
         session_destroy();
         header("Location: login.php");
@@ -16,13 +16,13 @@
         $pass = $_POST['pass'];
         $pass_confirm = $_POST['pass-confirm'];
         if (empty($pass)) {
-            $error = 'Please enter your password';
+            $error = 'Vui lòng nhập mật khẩu';
         }
         else if (strlen($pass) < 6) {
-            $error = 'Password must have at least 6 characters';
+            $error = 'Mật khẩu phải có ít nhất 6 ký tự';
         }
         else if ($pass != $pass_confirm) {
-            $error = 'Password does not match';
+            $error = 'Mật khẩu không trùng khớp';
         }
         else {
             require_once('connection.php');
@@ -36,7 +36,7 @@
                     exit();    
                 }
                 else {
-                    $error = 'Repassword failed';
+                    $error = 'Đổi mật khẩu thất bại';
                 }  
             }
             catch(PDOException $ex){
@@ -72,15 +72,15 @@
                         <input id="validation" name="pass-confirm" type="password" class="form-input" placeholder="Nhập lại mật khẩu mới">
                     </div>
                 </div>
-                <div class="input-group custom-control custom-checkbox pt-3">
-                    <?php
-                        if (!empty($error)) {
-                            echo "<div class='alert alert-danger' style='margin: auto'>$error</div>";
-                        }
-                    ?>
+                <?php
+                if (!empty($error)) {
+                    echo "<div class='alert-danger'>$error</div>";
+                }
+                ?>
+                <div class="input-group custom-control custom-checkbox pt-2">
                     <div class="custom-button text-right">
-                        <button name="login" class="btn btn-success btn-login">Đăng nhập</button>
                         <button name="logout" class="btn btn-logout">Đăng xuất</button>
+                        <button name="login" class="btn btn-success btn-login">Đăng nhập</button>
                     </div>
                     
                 </div>

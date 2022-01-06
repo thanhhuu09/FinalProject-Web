@@ -1,9 +1,9 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['user']) || $_SESSION['activated'] == 0) {
-        header('Location: login.php');
-        exit();
-    }
+//    session_start();
+//    if (!isset($_SESSION['user']) || $_SESSION['activated'] == 0) {
+//        header('Location: login.php');
+//        exit();
+//    }
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +104,7 @@
                 <div class="info-image">
                     <div class="info-img">
                         <div class="img-wrap">
-                            <img id="employee-avatar" src=".\avatar\avatar.jpg" alt="avatar"> 
+                            <img id="employee-avatar" src=".\avatar\avatar.jpg" alt="avatar">
                         </div>
                     </div>
                 </div>
@@ -118,12 +118,11 @@
 <div class="modal fade" id="new-employee-dialog">
         <div class="modal-dialog">
         <div class="modal-content">
-        
-            <div class="modal-header">
-            <h1 class="mt-4 mb-2" style="color: var(--dark-green)">Thêm nhân viên mới</h1>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
 
+            <div class="modal-content">
+                <div class="modal-header align-items-center">
+                    <h1 class="mt-4 mb-2">Thêm nhân viên mới</h1>
+                </div>
             <div class="modal-body">
                 <div class="form-group">
                     <label class="task-label" for="name-task">Tên đăng nhập</label>

@@ -20,13 +20,13 @@
         $pass = $_POST['pass'];
 
         if (empty($user)) {
-            $error = 'Please enter your username';
+            $error = 'Vui lòng nhập tên tài khoản';
         }
         else if (empty($pass)) {
-            $error = 'Please enter your password';
+            $error = 'Vui lòng nhập mật khẩu';
         }
-        else if (strlen($pass) < 3) {
-            $error = 'Password must have at least 3 characters';
+        else if (strlen($pass) < 4) {
+            $error = 'Mật khẩu phải có ít nhất 4 ký tự';
         }
         else {
             // success
@@ -37,7 +37,6 @@
             if($stmt->rowCount() > 0) {
                 $row = $stmt->fetch();
                 if (password_verify($pass,$row['password'])) {
-                // if ($pass == '123456') {
                     $_SESSION['user'] = $row['username'];
                     $_SESSION['activated'] = $row['activated'];
                     $_SESSION['avatar'] = $row['avatar'];
@@ -53,11 +52,11 @@
                     }
                 }
                 else {
-                    $error = 'Invalid Username or password';
+                    $error = 'Tài khoản hoặc mật khẩu không hợp lệ.';
                 }
             } 
             else {
-                $error = 'Invalid Username';
+                $error = 'Tài khoản không hợp lệ.';
             }
         }
     }
@@ -73,7 +72,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css?<?php echo time(); ?>">
 
 </head>
 <body>
@@ -93,14 +92,14 @@
                 <div class="form-group">
                     <input value="<?= $pass ?>" id="password" name="pass" type="password" class="form-input" placeholder="Mật khẩu">
                 </div>
+                <?php
+                if (!empty($error)) {
+                    echo "<div class='alert-danger'>$error</div>";
+                }
+                ?>
                 <div class="input-group custom-control custom-checkbox text-left">
                     <div class="custom-button text-right">
-                        <?php
-                            if (!empty($error)) {
-                                echo "<div class='alert alert-danger' style='text-align: center'>$error</div>";
-                            }
-                        ?>
-                        <button name="login" class="btn btn-success">Đăng nhập</button>
+                        <button name="login" class="btn btn-success btn-login">Đăng nhập</button>
                     </div>
                 </div>
             </form>

@@ -1,10 +1,10 @@
 <?php
     session_start();
 
-//    if (!isset($_SESSION['user']) || $_SESSION['activated'] == 0) {
-//        header('Location: login.php');
-//        exit();
-//    }
+    if (!isset($_SESSION['user']) || $_SESSION['activated'] == 0) {
+        header('Location: login.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 <body>
 
 <?php
-//require_once('include/Navbar.php')
+require_once('include/Navbar.php')
 ?>
 
 <div class="container-fluid align-items-center">
@@ -115,7 +115,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header align-items-center">
-                <h1 class="mt-4 mb-2">Tạo tác vụ mới</h1>
+                <h1 class="mt-4 mb-2">Thêm nhân viên mới</h1>
             </div>
 
             <form method="post" class="px-4 px-sm-4 px-m-5 px-lg-4 pt-3" enctype="multipart/form-data" action="api/add_task.php">
@@ -153,7 +153,7 @@
                 </div>
                 <div class="input-group custom-control custom-checkbox">
                     <div class="custom-button text-right">
-                        <button name="change-password" class="btn btn-success">Tạo tác vụ</button>
+                        <button name="add-task" class="btn btn-success">Tạo tác vụ</button>
                     </div>
                 </div>
             </form>
