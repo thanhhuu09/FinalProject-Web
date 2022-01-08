@@ -92,7 +92,7 @@ function resetPass(e) {
         });
     })
 }
-
+// validation form
 function message(text) {
     let errorMessage = document.getElementById('add-employee-error');
     errorMessage.style.display = '';
@@ -102,8 +102,6 @@ function hideMessage() {
     let errorMessage = document.getElementById('add-employee-error');
     document.getElementById('confirm-add').type = "submit";
     errorMessage.style.display = 'none';
-
-
 }
 function validateAddEmployeeForm() {
     let checkUsername = document.getElementById("username").value.trim();
@@ -123,8 +121,8 @@ function validateAddEmployeeForm() {
     }else{
         hideMessage();
     }
-
 }
+
 // Function to get list of employee
 function loadEmployee() {
     $.ajax({
