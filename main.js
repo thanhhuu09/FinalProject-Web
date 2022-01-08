@@ -109,7 +109,7 @@ function validateAddEmployeeForm() {
     let checkUsername = document.getElementById("username").value.trim();
     let checkName = document.getElementById("name").value;
     let usernameRegex = /^[a-z0-9_-]{6,20}$/;
-    
+
     if(checkUsername.length === 0){
         message("Vui lòng điền tên đăng nhập");
     }else if (checkName.length === 0){
