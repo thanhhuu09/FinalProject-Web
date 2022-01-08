@@ -109,20 +109,18 @@ function validateAddEmployeeForm() {
     let checkUsername = document.getElementById("username").value.trim();
     let checkName = document.getElementById("name").value;
     let usernameRegex = /^[a-z0-9_-]{6,20}$/;
-
-    let checkPosition = document.getElementById("position").value;
-    let checkDepartment = document.getElementById("department").value;
-
-
+    
     if(checkUsername.length === 0){
         message("Vui lòng điền tên đăng nhập");
     }else if (checkName.length === 0){
         message("Vui lòng nhập họ và tên nhân viên");
-    } else if(checkUsername.length < 6){
+    }else if (checkName.length === 0 && checkUsername.length ===0){
+        message("Vui lòng nhập đầy đủ thông tin")
+    }else if(checkUsername.length < 6){
         message("Tên đăng nhập quá ngắn");
-    } else  if(!checkUsername.match(usernameRegex)){
+    }else  if(!checkUsername.match(usernameRegex)){
         message("Tên đăng nhập không hợp lệ");
-    } else{
+    }else{
         hideMessage();
     }
 
