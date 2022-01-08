@@ -115,74 +115,74 @@
 </div>
 
 <!-- Add new dialog -->
-<div class="modal fade" id="new-employee-dialog">
+<form method="post">
+    <div class="modal fade" id="new-employee-dialog">
         <div class="modal-dialog">
-        <div class="modal-content">
-
             <div class="modal-content">
-                <div class="modal-header align-items-center">
-                    <h1 class="mt-4 mb-2">Thêm nhân viên mới</h1>
+
+                <div class="modal-content">
+                    <div class="modal-header align-items-center">
+                        <h1 class="mt-4 mb-2">Thêm nhân viên mới</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="task-label" for="name-task">Tên đăng nhập</label>
+                            <input id="username" type="text" class="form-input" placeholder="Nhập tên tài khoản">
+                        </div>
+                        <div class="form-group">
+                            <label class="task-label" for="name">Họ và tên</label>
+                            <input id="name" name="name" type="text" class="form-input" placeholder="Nhập họ và tên">
+                        </div>
+                        <div class="form-group">
+                            <label class="task-label" for="position">Chức vụ</label>
+                            <select id="position" name="position" class="form-input" style="padding: 2px 14px" required>
+                                <option value="1">Nhân viên</option>
+                                <option value="2">Trưởng phòng</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="task-label" for="department">Phòng/Ban</label>
+                            <select id="department" name="department" class="form-input" style="padding: 2px 14px" required>
+                                <option value="1">Công nghệ thông tin</option>
+                                <option value="2">Kế toán</option>
+                                <option value="3">Nhân sự</option>
+                            </select>
+                        </div>
+                        <div id="add-employee-error" class='alert alert-danger' style='text-align: center;margin: 0 23px;display:none'></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button onclick="validateAddEmployeeForm()" type="button" id ="confirm-add" class="btn btn-success">Save</button>
+                    </div>
                 </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="task-label" for="name-task">Tên đăng nhập</label>
-                    <input id="username" type="text" class="form-input" placeholder="Nhập tên tài khoản">
-                </div>
-                <div class="form-group">
-                    <label class="task-label" for="name">Họ và tên</label>
-                    <input id="name" name="name" type="text" class="form-input" placeholder="Nhập họ và tên">
-                </div>
-                <div class="form-group">
-                    <label class="task-label" for="position">Chức vụ</label>
-                    <select id="position" name="position" class="form-input" style="padding: 2px 14px">
-                        <option value="1">Nhân viên</option>
-                        <option value="2">Trưởng phòng</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="task-label" for="department">Phòng/Ban</label>
-                    <select id="department" name="department" class="form-input" style="padding: 2px 14px">
-                        <option value="1">Công nghệ thông tin</option>
-                        <option value="2">Kế toán</option>
-                        <option value="3">Nhân sự</option>
-                    </select>
-                </div>
-                <div id="add-employee-error" class='alert alert-danger' style='text-align: center;margin: 0 23px;display:none'></div>
-            </div>
-        
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id ="confirm-add" class="btn btn-success">Save</button>
-            </div>            
             </div>
         </div>
-    </div>
+</form>
 
-    <!-- Reset Dialog -->
-    <div id="resetPass" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <!-- Reset Dialog -->
+        <div id="resetPass" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <hp class="modal-title">Reset Password</hp>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Bạn có chắc muốn reset <strong class="reset-user"></strong> ?</p>
-                </div>
-                <div id="reset-password-error" class='alert alert-danger' style='text-align: center;margin: 10px 50px;display: none;'></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger resetpass-btn">Reset</button>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="modal-title">Reset Password</p>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Bạn có chắc muốn reset <strong class="reset-user"></strong> ?</p>
+                    </div>
+                    <div id="reset-password-error" class='alert alert-danger' style='text-align: center;margin: 10px 50px;display: none;'></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger resetpass-btn">Reset</button>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
-    </div>
-
-
 <script type="text/javascript" src="./main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

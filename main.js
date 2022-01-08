@@ -93,6 +93,40 @@ function resetPass(e) {
     })
 }
 
+function message(text) {
+    let errorMessage = document.getElementById('add-employee-error');
+    errorMessage.style.display = '';
+    errorMessage.innerHTML = text;
+}
+function hideMessage() {
+    let errorMessage = document.getElementById('add-employee-error');
+    document.getElementById('confirm-add').type = "submit";
+    errorMessage.style.display = 'none';
+
+
+}
+function validateAddEmployeeForm() {
+    let checkUsername = document.getElementById("username").value.trim();
+    let checkName = document.getElementById("name").value;
+    let usernameRegex = /^[a-z0-9_-]{6,20}$/;
+
+    let checkPosition = document.getElementById("position").value;
+    let checkDepartment = document.getElementById("department").value;
+
+
+    if(checkUsername.length === 0){
+        message("Vui lòng điền tên đăng nhập");
+    }else if (checkName.length === 0){
+        message("Vui lòng nhập họ và tên nhân viên");
+    } else if(checkUsername.length < 6){
+        message("Tên đăng nhập quá ngắn");
+    } else  if(!checkUsername.match(usernameRegex)){
+        message("Tên đăng nhập không hợp lệ");
+    } else{
+        hideMessage();
+    }
+
+}
 // Function to get list of employee
 function loadEmployee() {
     $.ajax({
