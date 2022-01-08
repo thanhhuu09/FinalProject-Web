@@ -110,12 +110,12 @@ function validateAddEmployeeForm() {
     let checkName = document.getElementById("name").value;
     let usernameRegex = /^[a-z0-9_-]{6,20}$/;
 
-    if(checkUsername.length === 0){
+    if (checkUsername.length === 0 && checkName.length === 0) {
+        message("Vui lòng nhập đầy đủ thông tin")
+    }else if(checkUsername.length === 0){
         message("Vui lòng điền tên đăng nhập");
     }else if (checkName.length === 0){
         message("Vui lòng nhập họ và tên nhân viên");
-    }else if (checkName.length === 0 && checkUsername.length ===0){
-        message("Vui lòng nhập đầy đủ thông tin")
     }else if(checkUsername.length < 6){
         message("Tên đăng nhập quá ngắn");
     }else  if(!checkUsername.match(usernameRegex)){
