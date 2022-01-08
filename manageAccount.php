@@ -148,7 +148,7 @@
                                 <option value="3">Nhân sự</option>
                             </select>
                         </div>
-                        <div id="add-employee-error" class='alert alert-danger' style='padding: 6px;text-align: center;margin: 0 23px;display:none'></div>
+                        <div id="add-employee-error" class='alert alert-danger' style='text-align: center;margin: 0 23px;display:none'></div>
                     </div>
 
                     <div class="modal-footer">
